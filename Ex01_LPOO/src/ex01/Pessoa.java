@@ -1,20 +1,25 @@
 package ex01;
 
+import java.util.Scanner;
+
 public class Pessoa {
+	
+    Scanner leitor = new Scanner(System.in); 
+	
 	//Atributos Privados
       private String nome;
       private int dataNasc;
       private double altura;
-      private int ano;
+      private int anoAtual = 2022;
       
     //Método Construtor
       public Pessoa() {}
       
-      public Pessoa(String nome, int dataNasc, double altura, int ano) {
+      public Pessoa(String nome, int dataNasc, double altura, int anoAtual) {
     	  this.nome = nome;
     	  this.dataNasc = dataNasc;
     	  this.altura = altura;
-    	  this.ano = ano;
+    	  this.anoAtual = anoAtual = 2022;
       }
       
 	public String getNome() {
@@ -25,14 +30,10 @@ public class Pessoa {
 	}
 	
 	public int getDataNasc() {
-		return this.ano - this.dataNasc;
+		return this.anoAtual - this.dataNasc;
 	}
 	public void setDataNasc(int dataNasc) {
 		this.dataNasc = dataNasc;
-	}
-	
-	public void setAno(int ano) {
-		this.ano = ano;
 	}
 	
 	public double getAltura() {
@@ -42,8 +43,25 @@ public class Pessoa {
 		this.altura = altura;
 	}
 	
+	public int getanoAtual() {
+		return anoAtual;
+	}
+	public void setanoAtual(int anoAtual) {
+		this.anoAtual = anoAtual;
+	}
+	
 	public void infosPessoa() {
-	 	System.out.println("Nome: " + this.getNome() + "\nData de Nascimento: " + 
+		
+	    System.out.print("Digite o nome: ");
+	    nome = leitor.nextLine();
+	    
+	    System.out.print("Digite o ano de nascimento: ");
+	    dataNasc = leitor.nextInt();
+	          
+	    System.out.print("Digite a altura: (Use vírgula ao invés de ponto) ");
+	    altura = leitor.nextDouble();	        
+		
+	 	System.out.println("\nNome: " + this.getNome() + "\nAno de Nascimento: " + 
 	 	this.dataNasc + "\nAltura: " + this.getAltura() + "cm \nIdade: " 
 	    + this.getDataNasc() + " anos");
 	}
